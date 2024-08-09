@@ -10,6 +10,8 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <link rel="stylesheet" href="https://unpkg.com/easymde/dist/easymde.min.css">
     <script src="https://unpkg.com/easymde/dist/easymde.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.css" />
 </head>
 
 <body class="font-sans antialiased">
@@ -25,12 +27,14 @@
 
             {{-- Brand --}}
             <div>App</div>
+
         </x-slot:brand>
 
         {{-- Right side actions --}}
         <x-slot:actions>
             <x-mary-button label="Messages" icon="o-envelope" link="###" class="btn-ghost btn-sm" responsive />
             <x-mary-button label="Notifications" icon="o-bell" link="###" class="btn-ghost btn-sm" responsive />
+            <x-mary-theme-toggle class="btn btn-circle" @click="$dispatch('mary-toggle-theme')" />
         </x-slot:actions>
     </x-mary-nav>
 
@@ -55,8 +59,9 @@
             <x-mary-menu activate-by-route>
                 <x-mary-menu-item title="Dashboard" icon="o-home" link="/dashboard" />
                 <x-mary-menu-item title="Posts" icon="o-document-plus" link="/posts" />
+                <x-mary-menu-item title="Product" icon="o-document-plus" link="/products" />
                 <x-mary-menu-sub title="Settings" icon="o-cog-6-tooth">
-                    <x-mary-menu-item title="Wifi" icon="o-wifi" link="####" />
+                    <x-mary-menu-item title="Profile" icon="o-wifi" link="####" />
                     <x-mary-menu-item title="Archives" icon="o-archive-box" link="####" />
                     </x-menu-sub>
             </x-mary-menu>

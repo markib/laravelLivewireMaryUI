@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 use App\Livewire\PostIndex as PostIndex;
 
+
 // Route::view('/admin', 'pages.auth.login');
 
 Volt::route('admin', 'pages.auth.login')
@@ -15,6 +16,10 @@ Volt::route('admin', 'pages.auth.login')
 Route::get('/posts', PostIndex::class)
     ->middleware(['auth', 'verified'])
     ->name('posts.index');
+
+Volt::route('/products', 'product.product-index')
+    ->middleware(['auth', 'verified'])
+    ->name('products.index');    
 
 
 Route::view('dashboard', 'dashboard')
