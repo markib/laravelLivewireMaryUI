@@ -19,11 +19,11 @@ jobs:
       - name: Set up PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.1'
+          php-version: '8.2'
           extensions: mbstring, sqlite3, bcmath, sodium
 
       - name: Install Composer dependencies
-        run: cd src && composer install --prefer-dist --no-interaction --no-scripts --no-progress
+        run: composer install --prefer-dist --no-interaction --no-scripts --no-progress
 
       - name: Run database migrations
         run: php artisan migrate --env=testing
