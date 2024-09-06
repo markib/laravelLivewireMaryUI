@@ -4,8 +4,11 @@ namespace Tests\Feature\Auth;
 
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Blade;
+use Livewire\Livewire;
 use Livewire\Volt\Volt;
 use Tests\TestCase;
+
 
 class AuthenticationTest extends TestCase
 {
@@ -13,21 +16,26 @@ class AuthenticationTest extends TestCase
 
     public function test_login_screen_can_be_rendered(): void
     {
-        $response = $this->get('/login');
+        $response = $this->get('/admin');
 
-        $response
-            ->assertOk()
-            ->assertSeeVolt('pages.auth.login');
+        // $response
+        //     ->assertOk()
+        //     ->assertSeeVolt('pages.auth.login');
+        $response->assertStatus(200);
+        $response->assertSee('Login');
+
     }
 
     public function test_users_can_authenticate_using_the_login_screen(): void
     {
         $user = User::factory()->create();
+        // dd(Blade::getClassComponentAliases());
 
-        $component = Volt::test('pages.auth.login')
+        $component = Livewire::test('pages.auth.login')
             ->set('form.email', $user->email)
             ->set('form.password', 'password');
-
+        // dd($component);
+        
         $component->call('login');
 
         $component
@@ -41,7 +49,7 @@ class AuthenticationTest extends TestCase
     {
         $user = User::factory()->create();
 
-        $component = Volt::test('pages.auth.login')
+        $component = Livewire::test('pages.auth.login')
             ->set('form.email', $user->email)
             ->set('form.password', 'wrong-password');
 
@@ -64,7 +72,7 @@ class AuthenticationTest extends TestCase
 
         $response
             ->assertOk()
-            ->assertSeeVolt('layout.navigation');
+            ->assertSeeLivewire('layout.navigation');
     }
 
     public function test_users_can_logout(): void
@@ -73,13 +81,13 @@ class AuthenticationTest extends TestCase
 
         $this->actingAs($user);
 
-        $component = Volt::test('layout.navigation');
+        $component = Livewire::test('layout.navigation');
 
         $component->call('logout');
 
         $component
             ->assertHasNoErrors()
-            ->assertRedirect('/');
+            ->assertRedirect('/admin');
 
         $this->assertGuest();
     }
