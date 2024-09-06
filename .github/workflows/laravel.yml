@@ -34,8 +34,10 @@ jobs:
         working-directory: src
         run: php artisan key:generate
       - name: Directory Permissions
+        working-directory: src
         run: chmod -R 777 storage bootstrap/cache
       - name: Create Database
+        working-directory: src
         run: |
           mkdir -p database
           touch database/database.sqlite
