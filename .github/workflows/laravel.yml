@@ -11,10 +11,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    
-    defaults:
-      run:
-        working-directory: src
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -26,9 +23,11 @@ jobs:
           extensions: mbstring, sqlite3, bcmath, sodium
 
       - name: Install Composer dependencies
+        working-directory: src
         run: composer install --prefer-dist --no-interaction --no-scripts --no-progress
 
       - name: Run database migrations
+        working-directory: src
         run: php artisan migrate --env=testing
 
       - name: Set up Node.js
@@ -37,18 +36,23 @@ jobs:
           node-version: '20' # Specify your Node.js version here  
 
       - name: Install npm dependencies
+        working-directory: src
         run: npm install
 
       - name: Build assets
+        working-directory: src
         run: npm run build
 
+      - name: List files in build directory
+        working-directory: src
+        run: ls -l public/build
+
       - name: Run tests
+        working-directory: src
         run: php artisan test
 
       - name: Upload test results
         uses: actions/upload-artifact@v3
         with:
           name: test-results
-          path: storage/logs/*.log
-
-  
+          path: src/storage/logs/*.log
