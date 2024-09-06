@@ -43,6 +43,14 @@ jobs:
         working-directory: src
         run: npm run build
 
+      - name: Clear application cache
+        working-directory: src
+        run: php artisan cache:clear
+
+      - name: Clear view cache
+        working-directory: src
+        run: php artisan view:clear
+
       - name: List files in build directory
         working-directory: src
         run: ls -l public/build
