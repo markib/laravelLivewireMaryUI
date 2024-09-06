@@ -23,7 +23,7 @@ jobs:
           extensions: mbstring, sqlite3, bcmath, sodium
 
       - name: Copy .env
-        run: php -r "file_exists('.env') || copy('.env.example', '.env');"    
+        run: php -r "file_exists('.env') || copy('.env.testing', '.env');"    
 
       - name: Install Composer dependencies
         working-directory: src
