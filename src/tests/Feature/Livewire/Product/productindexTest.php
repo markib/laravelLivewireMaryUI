@@ -11,14 +11,14 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 uses(RefreshDatabase::class);
 
 it('can_render_the_product_component', function () {
-    $component = Livewire::test('product\product-index'); // Update this to the correct path for your component
+    $component = Livewire::test('product.product-index'); // Update this to the correct path for your component
     $component->assertSee('Products');
     $component->assertSee('Add Category');
     $component->assertSee('Add Product');
 });
 
 it('can_show_product_modal', function () {
-    $component = Livewire::test('product\product-index');
+    $component = Livewire::test('product.product-index');
     $component->call('showProductModal');
     $component->assertSet('productModal', true);
 });
@@ -32,7 +32,7 @@ it('can_save_a_product', function () {
     $image = UploadedFile::fake()->image('product.jpg');
 
     // Test the product saving functionality
-    $component = Livewire::test('product\product-index')
+    $component = Livewire::test('product.product-index')
         ->set('product_name', 'Test Product')
         ->set('price', '100')
         ->set('selectedCategory', $category->id)
@@ -61,7 +61,7 @@ it('can_save_a_category', function () {
     $image = UploadedFile::fake()->image('category.jpg');
 
     // Test the category saving functionality
-    $component = Livewire::test('product\product-index')
+    $component = Livewire::test('product.product-index')
         ->set('name', 'Test Category')
         ->set('file', $image)
         ->call('saveCategory');
@@ -82,7 +82,7 @@ it('can_delete_a_category', function () {
     $category = ProductCategory::factory()->create();
 
     // Test the delete functionality
-    $component = Livewire::test('product\product-index')
+    $component = Livewire::test('product.product-index')
         ->call('delete', $category->id);
 
     // Check if the category was deleted from the database
@@ -96,7 +96,7 @@ it('sets_the_name_property_when_category_edit_is_called', function () {
     $category = ProductCategory::factory()->create(['name' => 'Test Category']);
 
     // Render the component
-    $component = Livewire::test('product\product-index') // replace with actual component class or name
+    $component = Livewire::test('product.product-index') // replace with actual component class or name
     ->call('edit', $category->id);
 
     // Assert that the name property is set correctly
