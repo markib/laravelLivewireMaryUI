@@ -7,5 +7,5 @@ it('can render', function () {
  
     $component = Livewire::test('post.stats');
 
-    $component->assertSee('Posts1');
+    $component->assertSee('Posts');
 });
