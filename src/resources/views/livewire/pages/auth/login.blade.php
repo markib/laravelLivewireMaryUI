@@ -29,7 +29,7 @@ $login = function () {
     <form wire:submit="login">
         <!-- Email Address -->
         <div>
-           
+
             <!-- <x-input-label for="email" :value="__('Email')" /> -->
             <x-mary-input icon="o-user" label="Email" wire:model="form.email" id="email" type="email" placeholder="Email" required autofocus autocomplete="username" />
         </div>

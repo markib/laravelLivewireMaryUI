@@ -12,8 +12,8 @@ $logout = function (Logout $logout) {
 ?>
 
 
-<div>   
-    
+<div>
+
    <!-- Authentication -->
                 <!-- <button wire:click="logout" class="w-full text-start">
                     <x-responsive-nav-link>
@@ -21,8 +21,8 @@ $logout = function (Logout $logout) {
                     </x-responsive-nav-link>
                 </button> -->
 
-               
+
                         <x-mary-button icon="o-power" class="btn-circle btn-ghost btn-xs" tooltip-left="logoff" wire:click="logout" spinner/>
-                
+
 
 </div>

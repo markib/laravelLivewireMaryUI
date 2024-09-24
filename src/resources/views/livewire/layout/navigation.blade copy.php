@@ -35,21 +35,21 @@ $logout = function (Logout $logout) {
                 <x-dropdown label="Settings" class="btn-outline">
     {{-- By default any click closes dropdown --}}
     <x-menu-item title="Close after click" />
- 
+
     <x-menu-separator />
- 
+
     {{-- Use `@click.STOP` to stop event propagation --}}
     <x-menu-item title="Keep open after click" @click.stop="alert('Keep open')" />
- 
+
     {{-- Or `wire:click.stop`  --}}
     <x-menu-item title="Call wire:click" wire:click.stop="delete" />
- 
+
     <x-menu-separator />
- 
+
     <x-menu-item @click.stop="">
         <x-checkbox label="Activate" />
     </x-menu-item>
- 
+
     <x-menu-item @click.stop="">
         <x-toggle label="Sleep mode" right />
     </x-menu-item>

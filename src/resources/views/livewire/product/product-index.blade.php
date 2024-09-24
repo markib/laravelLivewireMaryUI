@@ -106,7 +106,7 @@ $saveCategory = function () {
                 'image_path' => $this->imagePath
             ]);
 
-            // $this->reset(['name', 'photo']);    
+            // $this->reset(['name', 'photo']);
         }
         // Reset fields
         $this->reset(['name', 'file']);

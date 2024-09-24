@@ -10,7 +10,7 @@ new class extends Component {
     public $password = '';
     public $remember_me = false;
 
-  
+
 }; ?>
 
 <div>
