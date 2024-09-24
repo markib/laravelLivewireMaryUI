@@ -18,7 +18,7 @@ new class extends Component
 <section id="stats" aria-labelledby="stats" class="grid grid-cols-4 gap-4">
     <x-mary-stat title="Messages" value="44" icon="o-envelope" tooltip="Hello" />
 
-    <x-mary-stat title="Posts" description="" value={{$posts}} icon="o-arrow-trending-up" tooltip-bottom="post"  class="col-span-2"/>
+    <x-mary-stat title="Posts" description="" value="{{ $posts }}" icon="o-arrow-trending-up" tooltip-bottom="post" class="col-span-2" />
 
     {{-- <x-mary-stat title="Lost" description="This month" value="34" icon="o-arrow-trending-down" tooltip-left="Ops!" /> --}}
 

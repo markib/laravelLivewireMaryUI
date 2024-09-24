@@ -15,3 +15,4 @@
         </div>
     </div>
 </x-layouts.app>
+<?php ?>

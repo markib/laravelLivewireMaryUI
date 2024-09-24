@@ -6,9 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::create('products', function (Blueprint $table) {
@@ -20,7 +17,7 @@ return new class extends Migration
              */
             $table->unsignedBigInteger('product_category_id')->nullable();
             $table->foreign('product_category_id', 'fk_product_product_category')
-            ->references('id')->on('product_categories');
+                ->references('id')->on('product_categories');
 
             $table->text('description');
             $table->integer('selling_price');
@@ -32,9 +29,6 @@ return new class extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('products');

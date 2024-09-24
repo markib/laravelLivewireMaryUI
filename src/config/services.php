@@ -34,5 +34,12 @@ return [
             'channel' => env('SLACK_BOT_USER_DEFAULT_CHANNEL'),
         ],
     ],
+    'default' => [
+        'user' => [
+            'name' => env('SEEDER_USER_NAME', 'John Doe'),
+            'email' => env('SEEDER_USER_EMAIL', 'test@test.com'),
+            'password' => env('SEEDER_USER_PASSWORD', 'password'),
+        ],
+    ],
 
 ];

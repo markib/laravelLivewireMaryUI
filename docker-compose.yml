@@ -14,21 +14,30 @@ services:
       - "9000:9000"
     working_dir: /var/www
     depends_on:
-      - db
+      - localhost
+    environment:
+      - DB_CONNECTION=pgsql
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_DATABASE=livedata
+      - DB_USERNAME=postgres
+      - DB_PASSWORD="Nepal@323"  
 
 
   # Database Service
-  db:
+  localhost:
     image: postgres
     container_name: postgres
     volumes:
       - ./postgresql/data:/var/lib/postgresql/data
+      # - ./docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
     ports:
       - "5432:5432"
+    restart: unless-stopped  
     environment:
-      POSTGRES_DB: blog
-      POSTGRES_USER: root
-      POSTGRES_PASSWORD: password
+      POSTGRES_DB: livedata
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: "Nepal@323"
 
 
   # Web Server Service
@@ -42,7 +51,7 @@ services:
       - ./nginx/conf.d/:/etc/nginx/conf.d/
     depends_on:
       - app
-      - db
+      - localhost
 
 
   # pgAdmin Service
@@ -52,7 +61,7 @@ services:
     ports:
       - "5050:80"
     depends_on:
-      - db
+      - localhost
     environment:
       PGADMIN_DEFAULT_EMAIL: bikram@gmail.com
       PGADMIN_DEFAULT_PASSWORD: bik123

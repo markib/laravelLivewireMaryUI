@@ -6,9 +6,8 @@ use Livewire\Component;
 
 class ProjectCreate extends Component
 {
-    public function mount(){
-        
-    }
+    public function mount() {}
+
     public function render()
     {
         return view('livewire.project-create');

@@ -25,7 +25,7 @@ RUN apt-get update && apt-get -y install apt-utils nano wget dialog vim
 
 # Install important libraries
 RUN echo "Install important libraries"
-RUN apt-get -y install --fix-missing \
+RUN apt-get update && apt-get -y install --fix-missing \
     apt-utils \
     build-essential \
     git \
@@ -45,6 +45,7 @@ RUN apt-get -y install --fix-missing \
 
 # Install Postgres PDO (adjust for Windows if needed)
 RUN apt-get install -y libpq-dev \
+    postgresql-client \
     && docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql \
     && docker-php-ext-install pdo pdo_pgsql pgsql
 
@@ -53,16 +54,17 @@ RUN apt-get install -y libpq-dev \
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
 
-# Add any additional configurations or adjustments as needed
-
-
-
-
 # Set the working directory
 WORKDIR /var/www
 
 # Copy existing application directory contents
 COPY ./src /var/www
+
+# Copy the entrypoint script
+COPY ./entrypoint.sh /usr/local/bin/
+
+# Make the entrypoint script executable
+RUN chmod +x /usr/local/bin/entrypoint.sh
 
 # Copy package.json and package-lock.json before npm install
 COPY ./src/package.json /var/www/package.json
@@ -80,6 +82,8 @@ RUN npm run build
 # Expose the port
 EXPOSE 9000
 
+# Use the entrypoint script to start the container
+ENTRYPOINT ["entrypoint.sh"]
 
 # Define the entry point
 CMD ["php-fpm"]

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ isset($title) ? $title.' - '.config('app.name') : config('app.name') }}</title>
-  
+
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <link rel="stylesheet" href="https://unpkg.com/easymde/dist/easymde.min.css">
     <script src="https://unpkg.com/easymde/dist/easymde.min.js"></script>
@@ -46,7 +46,7 @@
         <x-slot:sidebar drawer="main-drawer" collapsible class="bg-orange-100">
 
             {{-- User --}}
-            @if($user = auth()->user())
+            @if ( $user = auth()->user() )
             <x-mary-list-item :item="$user" value="name" sub-value="email" no-separator no-hover class="pt-2">
                 <x-slot:actions>
                     <livewire:layout.navigation />
