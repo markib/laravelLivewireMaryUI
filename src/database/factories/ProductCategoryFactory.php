@@ -16,6 +16,7 @@ class ProductCategoryFactory extends Factory
      * @var string
      */
     protected $model = ProductCategory::class;
+
     /**
      * Define the model's default state.
      *

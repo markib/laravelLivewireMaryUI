@@ -15,11 +15,12 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // User::factory(10)->create();
+        $apiKey = config('services.default');
 
         User::factory()->create([
-            'name' =>  env('SEEDER_USER_NAME', 'John Doe'),
-            'email' => env('SEEDER_USER_EMAIL', 'test@test.com'),
-            'password' => Hash::make((env('SEEDER_USER_PASSWORD', 'password'))),
+            'name' => $apiKey['user']['name'],
+            'email' => $apiKey['user']['email'],
+            'password' => Hash::make($apiKey['user']['password']),
         ]);
     }
 }

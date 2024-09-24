@@ -4,13 +4,8 @@ namespace Tests;
 
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 
-
-
-
 abstract class TestCase extends BaseTestCase
 {
-    
-
     protected function setUp(): void
     {
         parent::setUp();
@@ -19,5 +14,4 @@ abstract class TestCase extends BaseTestCase
         $this->app->register(\App\Providers\AppServiceProvider::class);
         $this->app->register(\App\Providers\VoltServiceProvider::class);
     }
-     
 }

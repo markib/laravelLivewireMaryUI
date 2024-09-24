@@ -75,7 +75,6 @@ $saveProduct = function () {
         // Reset fields
         $this->reset(['product_name', 'price', 'file', 'content', 'selectedCategory']);
         $this->productModal = false;
-
     } catch (Exception $e) {
         // throw $e;
         $this->errorMessage = $e->getMessage();
@@ -85,7 +84,7 @@ $saveProduct = function () {
 
 //rules(['name' => 'required|min:3', 'file' => 'image|max:1024']);
 $saveCategory = function () {
-    
+
 
     try {
         // Apply validation rules specific to saving a category
@@ -155,7 +154,7 @@ $edit = function ($id) {
     <x-mary-modal wire:model="productModal" title="Add Product" class="backdrop-blur" box-class="bg-red-50">
         <template x-if="$wire.productModal">
             <x-mary-form wire:submit.prevent="saveProduct">
-                @if($errorMessage)
+                @if ($errorMessage)
                 <span class=" text-red-500">{{ $errorMessage }}</span>
                 @endif
                 <x-mary-input label="Product Name" wire:model="product_name" />
@@ -177,7 +176,7 @@ $edit = function ($id) {
     <x-mary-modal wire:model="categoryModal" title="Add Category" class="backdrop-blur" box-class="bg-red-50 max-w-4xl">
         <div class="grid grid-cols-2 gap-4">
             <div>
-                @foreach($category as $key=>$cat)
+                @foreach ($category as $key => $cat)
                 <x-mary-list-item :item="$cat" wire:click="edit( {{ $cat->id }} )">
 
                     <x-slot:actions>
@@ -190,7 +189,7 @@ $edit = function ($id) {
             <div>
                 <template x-if="$wire.categoryModal">
                     <x-mary-form wire:submit.prevent="saveCategory">
-                        @if($errorMessage)
+                        @if ($errorMessage)
                         <span class="text-red-500">{{ $errorMessage }}</span>
                         @endif
 

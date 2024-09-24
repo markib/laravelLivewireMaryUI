@@ -10,7 +10,10 @@ class RegistrationTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_registration_screen_can_be_rendered(): void
+    /**
+     * @test
+     */
+    public function registration_screen_can_be_rendered(): void
     {
         $response = $this->get('/register');
 
@@ -19,7 +22,10 @@ class RegistrationTest extends TestCase
             ->assertSeeLivewire('pages.auth.register');
     }
 
-    public function test_new_users_can_register(): void
+    /**
+     * @test
+     */
+    public function new_users_can_register(): void
     {
         $component = Livewire::test('pages.auth.register')
             ->set('name', 'Test User')

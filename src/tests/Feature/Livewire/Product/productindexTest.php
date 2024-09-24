@@ -2,11 +2,10 @@
 
 use App\Models\Product;
 use App\Models\ProductCategory;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Livewire;
-use Mary\Traits\Toast;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 
 uses(RefreshDatabase::class);
 
@@ -48,7 +47,7 @@ it('can_save_a_product', function () {
         'product_category_id' => $category->id,
         // 'description' => 'This is test description',
         'selling_price' => '100',
-        'image_path' => Storage::url('products/' . $image->hashName())
+        'image_path' => Storage::url('products/' . $image->hashName()),
     ]);
 
     // Check if the image was stored
@@ -97,7 +96,7 @@ it('sets_the_name_property_when_category_edit_is_called', function () {
 
     // Render the component
     $component = Livewire::test('product.product-index') // replace with actual component class or name
-    ->call('edit', $category->id);
+        ->call('edit', $category->id);
 
     // Assert that the name property is set correctly
     $component->assertSet('name', 'Test Category');

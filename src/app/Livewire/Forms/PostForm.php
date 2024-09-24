@@ -2,13 +2,22 @@
 
 namespace App\Livewire\Forms;
 
+use App\Models\Post;
 use Livewire\Attributes\Validate;
 use Livewire\Form;
-use App\Models\Post;
 
 class PostForm extends Form
 {
     public ?Post $post;
+
+    #[Validate('string', 'required')]
+    public $title;
+
+    #[Validate('string', 'required')]
+    public $slug;
+
+    #[Validate('string', 'required')]
+    public $content;
 
     public function mount(Post $post)
     {
@@ -16,16 +25,8 @@ class PostForm extends Form
         $this->fill($post->only(['title', 'slug', 'content']));
     }
 
-    #[Validate('string','required')]
-    public $title;
-
-    #[Validate('string','required')]
-    public $slug;
-
-    #[Validate('string','required')]
-    public $content;
-
-    public function setPost(Post $post){
+    public function setPost(Post $post)
+    {
         $this->post = $post;
         $this->title = $post->title;
         $this->slug = $post->slug;
@@ -33,7 +34,8 @@ class PostForm extends Form
 
     }
 
-    public function store(){
+    public function store()
+    {
         $this->validate();
         Post::create([
             'title' => $this->title,
