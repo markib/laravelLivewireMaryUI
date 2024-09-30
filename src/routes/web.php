@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Api\AiController;
+use App\Livewire\Chat\Chat;
+use App\Livewire\Chat\ChatBot;
 use App\Livewire\PostIndex as PostIndex;
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
@@ -27,4 +30,8 @@ Route::view('profile', 'profile')
     ->middleware(['auth'])
     ->name('profile');
 
+Route::get('/write', [AiController::class, 'index']);
+
+Route::get('/chat', Chat::class);
+    
 require __DIR__ . '/auth.php';
