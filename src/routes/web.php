@@ -32,6 +32,8 @@ Route::view('profile', 'profile')
 
 Route::get('/write', [AiController::class, 'index']);
 
-Route::get('/chat', Chat::class);
+Route::get('/chat', Chat::class)
+        ->middleware(['auth', 'verified'])
+        ->name('chat.index');
     
 require __DIR__ . '/auth.php';
