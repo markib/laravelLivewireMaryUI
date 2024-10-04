@@ -2,8 +2,9 @@
 
 use App\Http\Controllers\Api\AiController;
 use App\Livewire\Chat\Chat;
-use App\Livewire\Chat\ChatBot;
+use App\Livewire\PlantIdentifier;
 use App\Livewire\PostIndex as PostIndex;
+use App\Livewire\ReceiptScanner;
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 
@@ -35,5 +36,14 @@ Route::get('/write', [AiController::class, 'index']);
 Route::get('/chat', Chat::class)
         ->middleware(['auth', 'verified'])
         ->name('chat.index');
-    
+
+Route::get('/plant-identifier', PlantIdentifier::class)
+    ->middleware(['auth', 'verified'])
+    ->name('plant-identifier');
+
+Route::get('/receipt-scanner', ReceiptScanner::class)
+    ->middleware(['auth', 'verified'])
+    ->name('receipt-scanner');
+
+
 require __DIR__ . '/auth.php';

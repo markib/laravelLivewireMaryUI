@@ -39,7 +39,7 @@ class ChatBot extends Component
     function ask()
     {
 // dd($this->messages);
-      Log::notice($this->messages);
+    //   Log::notice($this->messages);
         foreach($this->messages as $key => $message){
               if ($message['role'] === 'user'){
         $geminiApiKey = getenv('GEMINI_API_KEY'); 
