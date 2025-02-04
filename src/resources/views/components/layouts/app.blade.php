@@ -63,6 +63,7 @@
                 <x-mary-menu-item title="Chat" icon="o-chat-bubble-left-right" link="/chat" />
                 <x-mary-menu-item title="Plant Identifier" icon="o-chat-bubble-left-right" link="/plant-identifier" />
                 <x-mary-menu-item title="ReceiptScanner" icon="o-chat-bubble-left-right" link="/receipt-scanner" />
+                <x-mary-menu-item title="RecipeGenerate" icon="o-chat-bubble-left-right" link="/recipe-generate" />
                 <x-mary-menu-sub title="Settings" icon="o-cog-6-tooth">
                     <x-mary-menu-item title="Profile" icon="o-wifi" link="####" />
                     <x-mary-menu-item title="Archives" icon="o-archive-box" link="####" />

@@ -5,6 +5,7 @@ use App\Livewire\Chat\Chat;
 use App\Livewire\PlantIdentifier;
 use App\Livewire\PostIndex as PostIndex;
 use App\Livewire\ReceiptScanner;
+use App\Livewire\RecipeGenerator;
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 
@@ -44,6 +45,10 @@ Route::get('/plant-identifier', PlantIdentifier::class)
 Route::get('/receipt-scanner', ReceiptScanner::class)
     ->middleware(['auth', 'verified'])
     ->name('receipt-scanner');
+
+Route::get('/recipe-generate', RecipeGenerator::class)
+->middleware(['auth', 'verified'])
+->name('recipe-generate');
 
 
 require __DIR__ . '/auth.php';
